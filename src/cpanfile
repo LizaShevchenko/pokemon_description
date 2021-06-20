@@ -1,0 +1,8 @@
+requires 'LWP::UserAgent';
+requires 'Unicode::UTF8';
+requires 'LWP::Protocol::https';
+requires 'JSON::XS';
+requires 'Try::Tiny';
+requires 'Readonly';
+requires 'Mojolicious::Lite';
+requires 'HTTP::Request';
