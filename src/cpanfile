@@ -3,4 +3,5 @@ requires 'JSON::XS';
 requires 'LWP::UserAgent';
 requires 'Mojolicious::Lite';
 requires 'Readonly';
+requires 'Test::Most';
 requires 'Try::Tiny';

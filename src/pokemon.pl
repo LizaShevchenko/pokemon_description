@@ -82,12 +82,16 @@ sub _get_pokemon_details_by_name {
 
     my $json_decoded_response = _parse_json($response->decoded_content());
 
-    if ($json_decoded_response->{"flavor_text_entries"}) { #if the original response was not JSON this check will be skipped 
+    #if the original response was not JSON this check will be skipped
+    if ($json_decoded_response->{"flavor_text_entries"}) {
         my $i = 0;
         while (my $flavor_text_entries = $json_decoded_response->{"flavor_text_entries"}) {
-            if ($flavor_text_entries->[$i]->{'language'}->{'name'} eq 'en') { #looking for the first English entry within flavor_text_entries
+            #looking for the first English entry within flavor_text_entries
+            if ($flavor_text_entries->[$i]->{'language'}->{'name'} eq 'en') {
                 my $pokemon_description = $flavor_text_entries->[$i]->{"flavor_text"}; 
-                $pokemon_description =~ s/(\n|\f)/ /g; #cleaning the flavor_text by removing excessive new lines and \f.
+
+                #cleaning the flavor_text by removing excessive new lines and \f
+                $pokemon_description =~ s/(\n|\f)/ /g;
                 return (0,$pokemon_description);
             }
             $i++;
@@ -104,24 +108,29 @@ sub _translate_into_shakespearean_text {
     my $request = HTTP::Request->new(GET => $FUNTRANSLATIONS_URL . $pokemon_description);
     my $response = _build_user_agent($request);
 
-    if (!$response->is_success && $response->code != 429) { #cheking whether the response was unsuccessul but excluding error code 429 as it is checked below
+    #cheking whether the response was unsuccessul but excluding error code 429 as it is checked below
+    if (!$response->is_success && $response->code != 429) {
         warn "Request to api.funtranslations.com was unsuccessful.";
         return ($ERROR{pokemon_description_unavailable},0);
     }
 
     my $json_decoded_response = _parse_json($response->decoded_content());
-    
-    if ($json_decoded_response->{"error"}->{"message"}) { #this error message retured on error code 429, hence this code is excluded from the previous check
+
+    #this error message retured on error code 429, hence this code is excluded from the previous check
+    if ($json_decoded_response->{"error"}->{"message"}) {
         my $wait_time = $json_decoded_response->{"error"}->{"message"};
-        $wait_time =~ s/Too Many Requests: Rate limit of 5 requests per hour exceeded. Please wait for //; #grabbing the wait time until the next successful request in order to use in the error message
+
+        #grabbing the wait time until the next successful request in order to use in the error message
+        $wait_time =~ s/Too Many Requests: Rate limit of 5 requests per hour exceeded. Please wait for //;
         
         warn "Request to api.funtranslations.com was unsuccessful: ". $json_decoded_response->{"error"}->{"message"};
         return ($ERROR{translation_unavailable} . $wait_time,0);
     }
 
-    if ($json_decoded_response->{"contents"}->{"translated"}) { #if the original response was not JSON this check will be skipped 
+    #if the original response was not JSON this check will be skipped
+    if ($json_decoded_response->{"contents"}->{"translated"}) {
         my $translated_text = $json_decoded_response->{"contents"}->{"translated"};
-       
+
         return (0,$translated_text);
     }
 
