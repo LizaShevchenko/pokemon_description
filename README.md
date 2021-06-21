@@ -15,11 +15,11 @@ First you need docker installed:
 
 https://www.docker.com/products/docker-desktop
 
-Then download this repo as a zip archive
+Clone the repo
 
-Unzip it on your machine in a desired directory, let's call it 'pokemon'
+    git clone git@github.com:LizaShevchenko/pokemon_description.git
 
-Go to the 'pokemon' directory, then build and run the docker image as following (make sure Docker app is running):
+Go to the directory pokemon_description you just cloned, then build and run the docker image as following (make sure Docker app is running):
 
     docker build -t pokemon .
     docker run -p 8080:8080 pokemon
