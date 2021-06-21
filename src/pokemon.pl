@@ -18,6 +18,10 @@ Readonly my %ERROR => (pokemon_doesnt_exist => "This pokemon doesn't exist! This
                         translation_unavailable => "Can't get the Pokemon description at the moment. Please try in "
                         );
 
+get '/pokemon' => sub ($c) {
+    $c->render(text => 'Please add a pokemon name at the end of the URL');
+};
+
 get '/pokemon/:pokemon_name' => sub ($c) { 
     my $pokemon_name = lc($c->param("pokemon_name"));
     my $result = _get_shakespearean_pokemon_description($pokemon_name);

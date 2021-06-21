@@ -11,15 +11,15 @@ This is a Mojolicious based app which retrieves a Shakespearean description of a
 
 ### Running locally
 
-First you need docker and docker-compose installed:
+First you need docker installed:
 
-https://www.docker.com/community-edition#/download
+https://www.docker.com/products/docker-desktop
 
 Then download this repo as a zip archive
 
 Unzip it on your machine in a desired directory, let's call it 'pokemon'
 
-Go to the 'pokemon' directory, then build and run the docker image as following:
+Go to the 'pokemon' directory, then build and run the docker image as following (make sure Docker app is running):
 
     docker build -t pokemon .
     docker run -p 8080:8080 pokemon
