@@ -1,7 +1,7 @@
-Pokemon Shakespearen Description
+Pokemon Shakespearean Description
 ================================
 
-This is a Mojolicious based app which retrieves a Shakespearen description of a requested pokemon.
+This is a Mojolicious based app which retrieves a Shakespearean description of a requested pokemon.
 
 3rd parties APIs used:
  * https://pokeapi.co
@@ -34,7 +34,7 @@ After building and running the image, go to the URL below in a browser specifyin
 
 127.0.0.1:8080/pokemon/pikachu
 
-If the pokemon you specified is an existing pokemon you will get a JSON response back with the Shakespearen description of it.
+If the pokemon you specified is an existing pokemon you will get a JSON response back with the Shakespearean description of it.
 
 Example: For this request 127.0.0.1:8080/pokemon/ you would see this response:
 
