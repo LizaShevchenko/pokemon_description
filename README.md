@@ -24,10 +24,6 @@ Go to the directory pokemon_description you just cloned, then build and run the 
     docker build -t pokemon .
     docker run -p 8080:8080 pokemon
 
-Start the app by running this command
-
-    ./pokemon.pl daemon -m production -l http://*:8080
-
 Now the app is running on http://127.0.0.1:8080
 
 ## How to Use the Project
@@ -45,11 +41,16 @@ Example: For this request http://127.0.0.1:8080/pokemon/pikachu you would see th
 
 ## Tests
 
-While running the Docker image, run the following command from the main directory (pokemon_description)
+The tests are run as a part of the Docker build.
+In order to run the tests manualy, stop running the Docker image (the command 'docker run -p 8080:8080 pokemon'), then do docker run with mounting the volume as below
+
+    docker run -p 8080:8080 -v $PWD/src:/src -it pokemon bash
+
+Now run tests as below
 
     prove t
 
-Expected Test output
+Expected tests output
 
     t/test_shakespearean_pokemon_description.t .. 1/? Request to pokeapi.co was unsuccessful. at ../lib/PokemonModule.pm line 73.
     Request to pokeapi.co was successful but expected JSON was not received. at ../lib/PokemonModule.pm line 95.
