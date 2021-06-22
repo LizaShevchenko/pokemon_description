@@ -1,5 +1,6 @@
 requires 'HTTP::Request';
 requires 'JSON::XS';
+requires 'LWP::Protocol::https';
 requires 'LWP::UserAgent';
 requires 'Mojolicious::Lite';
 requires 'Readonly';

@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use HTTP::Request;
 use JSON::XS;
+use LWP::Protocol::https;
 use LWP::UserAgent;
 use Mojolicious::Lite -signatures;
 use Readonly;
@@ -18,8 +19,14 @@ Readonly my %ERROR => (pokemon_doesnt_exist => "This pokemon doesn't exist! This
                         translation_unavailable => "Can't get the Pokemon description at the moment. Please try in "
                         );
 
+get '/healthcheck' => sub ($c) {
+    my $result = { status => 'ok', date => time() };
+    $c->render(json => $result);
+};
+
 get '/pokemon' => sub ($c) {
-    $c->render(text => 'Please add a pokemon name at the end of the URL');
+    my $result = { name => '', error => 'Please add a pokemon name at the end of the URL' };
+    $c->render(json => $result);
 };
 
 get '/pokemon/:pokemon_name' => sub ($c) { 
