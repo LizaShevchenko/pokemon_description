@@ -24,6 +24,10 @@ Go to the directory pokemon_description you just cloned, then build and run the 
     docker build -t pokemon .
     docker run -p 8080:8080 pokemon
 
+Start the app by running this command
+
+    ./pokemon.pl daemon -m production -l http://*:8080
+
 Now the app is running on http://127.0.0.1:8080
 
 ## How to Use the Project
@@ -40,3 +44,18 @@ Example: For this request http://127.0.0.1:8080/pokemon/pikachu you would see th
 
 
 ## Tests
+
+While running the Docker image, run the following command from the main directory (pokemon_description)
+
+    prove t
+
+Expected Test output
+    t/test_shakespearean_pokemon_description.t .. 1/? Request to pokeapi.co was unsuccessful. at ../lib/PokemonModule.pm line 73.
+    Request to pokeapi.co was successful but expected JSON was not received. at ../lib/PokemonModule.pm line 95.
+    Request to api.funtranslations.com was unsuccessful. at ../lib/PokemonModule.pm line 108.
+    Request to api.funtranslations.com was unsuccessful: Too Many Requests: Rate limit of 5 requests per hour exceeded. Please wait for 59 minutes and 59 seconds. at ../lib/PokemonModule.pm line 121.
+    Request to api.funtranslations.com was successful but expected JSON was not received. at ../lib/PokemonModule.pm line 132.
+    t/test_shakespearean_pokemon_description.t .. ok   
+    All tests successful.
+    Files=1, Tests=3,  0 wallclock secs ( 0.02 usr  0.01 sys +  0.33 cusr  0.04 csys =  0.40 CPU)
+    Result: PASS
