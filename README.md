@@ -50,10 +50,11 @@ While running the Docker image, run the following command from the main director
     prove t
 
 Expected Test output
+
     t/test_shakespearean_pokemon_description.t .. 1/? Request to pokeapi.co was unsuccessful. at ../lib/PokemonModule.pm line 73.
     Request to pokeapi.co was successful but expected JSON was not received. at ../lib/PokemonModule.pm line 95.
     Request to api.funtranslations.com was unsuccessful. at ../lib/PokemonModule.pm line 108.
-    Request to api.funtranslations.com was unsuccessful: Too Many Requests: Rate limit of 5 requests per hour exceeded. Please wait for 59 minutes and 59 seconds. at ../lib/PokemonModule.pm line 121.
+    Request to api.funtranslations.com was unsuccessful: Too Many Requests: Rate limit of 5 requests per hour exceeded. Please wait for 59 minutes and 59 seconds.       at ../lib/PokemonModule.pm line 121.
     Request to api.funtranslations.com was successful but expected JSON was not received. at ../lib/PokemonModule.pm line 132.
     t/test_shakespearean_pokemon_description.t .. ok   
     All tests successful.
