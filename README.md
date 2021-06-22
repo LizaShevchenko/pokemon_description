@@ -1,7 +1,7 @@
 Pokemon Shakespearean Description
 ================================
 
-This is a Mojolicious based app which retrieves a Shakespearean description of a requested pokemon.
+This is a Mojolicious based app that retrieves a Shakespearean description of a requested pokemon.
 
 3rd party APIs used:
  * https://pokeapi.co
@@ -11,7 +11,7 @@ This is a Mojolicious based app which retrieves a Shakespearean description of a
 
 ### Running locally
 
-First you need to have Docker installed:
+First, you need to have Docker installed:
 
 https://www.docker.com/products/docker-desktop
 
