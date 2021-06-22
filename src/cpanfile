@@ -1,8 +1,13 @@
+requires 'HTTP::Headers';
+requires 'HTTP::Message';
 requires 'HTTP::Request';
+requires 'HTTP::Response';
 requires 'JSON::XS';
 requires 'LWP::Protocol::https';
 requires 'LWP::UserAgent';
 requires 'Mojolicious::Lite';
+requires 'Moo';
 requires 'Readonly';
+requires 'Test::MockModule';
 requires 'Test::Most';
 requires 'Try::Tiny';
