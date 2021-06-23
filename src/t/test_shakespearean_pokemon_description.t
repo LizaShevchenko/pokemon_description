@@ -62,7 +62,7 @@ subtest 'Test description retrieval' => sub {
 
 };
 
-subtest 'Test description retrieval' => sub {
+subtest 'Test transaltion retrieval' => sub {
     
     #Testing when funtranslations API returns 503 Service Unavailable
     $module->mock('_build_user_agent', sub {
